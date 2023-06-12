@@ -1,0 +1,333 @@
+
+ 
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+   
+
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script>
+    function openWindow() {
+        window.open('http://127.0.0.1:8000/bpri/', 'chrome_window', 'width=800,height=600,toolbar=no,location=no,resizable=yes');
+      }
+    </script>
+<script>
+ $(document).ready(function() {
+   $('.select2').select2();
+ });
+
+
+</script>
+   <style>
+    .it[type=text],[type=number],[type=date],[type=tel], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  .sl[type=text],  textarea {
+    width: 15%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  .sum[type=submit], [type=button] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sum[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+    .sidebar {
+       position: fixed;
+       top: 0;
+       left: 0;
+       height: 100vh;
+       width: 250px;
+       background-color: #191c1e;
+       color: #fff;
+       padding: 20px;
+     }
+     
+     .content {
+       margin-left: 250px; /* Sidebar width */
+       padding: 20px;
+     }
+     
+     @media (max-width: 768px) {
+       .sidebar {
+         width: 100%;
+         height: auto;
+         position: static;
+       }
+       
+       .content {
+         margin-left: 0;
+       }
+     }
+     
+     /* Rest of your styles */
+   </style>
+ </head>
+ <body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <div class="container-fluid">
+       <a class="navbar-brand mx-auto" href="/"><p style="height: 10px; margin-left: 50%;"> SRI HARI</p></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+     </div>
+   </nav>
+ 
+   <div class="container-fluid">
+     <div class="row">
+       <div class="col-lg-3">
+         <div class="sidebar" style="margin-top: 50px;">
+          <style>
+            .nav-item{
+             border: 1px rgb(68, 236, 172) solid;
+             text-align: center;
+             border-radius: 5px;
+             padding: 3px;
+             margin-bottom: 5px;
+        
+           }
+           a{
+             text-decoration: none;
+             color: aliceblue;
+           }
+           a:hover{
+             color: #ee10a4;
+           }
+           div.ex1 {
+             background-color: rgb(170, 226, 243);
+             height:620px;
+             width: 100%;
+             overflow-y: scroll;
+           }
+           #customers {
+             font-family: Arial, Helvetica, sans-serif;
+             border-collapse: collapse;
+             width: 100%;
+           }
+
+           #customers td, #customers th {
+             border: 1px solid #db0606;
+             padding: 8px;
+             width:fit-content;
+           }
+
+
+           #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+           #customers tr:hover {background-color: #ddd;}
+
+           #customers th {
+             padding-top: 12px;
+             padding-bottom: 12px;
+             text-align: left;
+             background-color: #e41cc9;
+             color: white;
+           }
+         </style>
+         <ul class="list-unstyled">
+          <li class="nav-item"><a class="nav-lin" href="/">Customer Bill</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/bill2">Labor Bill</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/perdet">Customer History</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/bperdet">Labor History</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/proo">Product List</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/prolis">Add Product</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/stock">Purchase</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/totout">Amount_Track</a></li>
+
+         </ul>
+         </div>
+      
+         </div>
+       </div>
+       
+       <div class="col-lg-11">
+         <div class="content">
+           <div class="ex1">
+             <div class="container" >  <br>
+              
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          {% load static %}
+   
+
+          <center><h1>Data About Products</h1></center><br>
+          {% if elec %}
+          <table id="customers">
+            <thead>
+             <th style="text-align: center;">Electrical</th>
+             <th style="text-align: center; width: 125px;">Qty</th>
+             <th style="text-align: center; width: 135px;"> Price</th>
+             <th style="text-align: center; width: 125px;">Edit</th>
+            </thead>
+            <tbody>
+            {% for x in elec %}
+            <tr>
+              <td>{{x.product}}</td>
+              <td><center>{{x.qty}}</center></td>
+              <td><center>{{x.rate}}</center></td>
+              <td> <center>    
+                <a href="/elecup/{{x.id}}"><button style="display: inline-block;" class="btn"><i class="fa fa-edit"></i></button> </a>
+                <a href="/elecde/{{x.id}}"><button style="display: inline-block;" class="btn"><i class="fa fa-trash"></i></button></a>
+                </center>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+          {% else %}
+          <table id="customers">
+            <thead>
+              <th><center>---------------------------No Datas Found--------------------------</center></th>
+            </thead>
+          </table>
+          {% endif %}
+<br><br>
+
+          {% if plum %}
+          <table id="customers">
+            <thead>
+             <th style="text-align: center;">Plumbing </th>
+             <th style="text-align: center; width: 125px;">Qty</th>
+             <th style="text-align: center; width: 135px;"> Price</th>
+             <th style="text-align: center; width: 125px;">Edit</th>
+            </thead>
+            <tbody>
+            {% for x in plum %}
+            <tr>
+              <td>{{x.product}}</td>
+              <td><center>{{x.qty}}</center></td>
+              <td><center>{{x.rate}}</center></td>
+              <td> <center>    
+                <a href="/plumup/{{x.id}}"><button style="display: inline-block;" class="btn"><i class="fa fa-edit"></i></button> </a>
+                <a href="/plumde/{{x.id}}"><button style="display: inline-block;" class="btn"><i class="fa fa-trash"></i></button></a>
+                </center>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+          {% else %}
+          <table id="customers">
+            <thead>
+              <th><center>---------------------------No Datas Found--------------------------</center></th>
+            </thead>
+          </table>
+          {% endif %}
+
+
+<br><br>
+
+          {% if hard %}
+          <table id="customers">
+            <thead>
+             <th style="text-align: center;">Hardware</th>
+             <th style="text-align: center; width: 125px;">Qty</th>
+             <th style="text-align: center; width: 135px;"> Price</th>
+             <th style="text-align: center; width: 125px;">Edit</th>
+            </thead>
+            <tbody>
+            {% for x in hard %}
+            <tr>
+              <td>{{x.product}}</td>
+              <td><center>{{x.qty}}</center></td>
+              <td><center>{{x.rate}}</center></td>
+              <td> <center>    
+                <a href="/hardup/{{x.id}}"><button style="display: inline-block;" class="btn"><i class="fa fa-edit"></i></button> </a>
+                <a href="/hardde/{{x.id}}"><button style="display: inline-block;" class="btn"><i class="fa fa-trash"></i></button></a>
+                </center>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+          {% else %}
+          <table id="customers">
+            <thead>
+              <th><center>---------------------------No Datas Found--------------------------</center></th>
+            </thead>
+          </table>
+          {% endif %}
+    
+ </center>
+    
+
+
+</div>
+<br><br>
+
+ <br><br>
+
+       </div>
+     </div>
+   </div>
+
+ </body>
+ </html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ 
+ 
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Bill</title>
+
+    <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/select2.min.js' %}"></script>
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <style>
+   
+    .it[type=text],[type=number],[type=date],[type = datetime-local],[id = nqty],[id = payment], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  .sl[type=text],  textarea {
+    width: 15%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  .sum[type=submit], [type=button] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sum[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+    .sidebar {
+       position: fixed;
+       top: 0;
+       left: 0;
+       height: 100vh;
+       width: 250px;
+       background-color: #191c1e;
+       color: #fff;
+       padding: 20px;
+     }
+     
+     .content {
+       margin-left: 250px; /* Sidebar width */
+       padding: 20px;
+     }
+     
+     @media (max-width: 768px) {
+       .sidebar {
+         width: 100%;
+         height: auto;
+         position: static;
+       }
+       
+       .content {
+         margin-left: 0;
+       }
+     }
+     
+     /* Rest of your styles */
+   </style>
+ </head>
+ <body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <div class="container-fluid">
+       <a class="navbar-brand mx-auto" href="/"><p style="height: 10px; margin-left: 50%;"> SRI HARI</p></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+     </div>
+   </nav>
+ 
+   <div class="container-fluid">
+     <div class="row">
+       <div class="col-lg-3">
+         <div class="sidebar" style="margin-top: 50px;">
+          <style>
+            .nav-item{
+             border: 1px rgb(68, 236, 172) solid;
+             text-align: center;
+             border-radius: 5px;
+             padding: 3px;
+             margin-bottom: 5px;
+        
+           }
+           a{
+             text-decoration: none;
+             color: rgb(255, 255, 255);
+           }
+           a:hover{
+             color: #ce28b2;
+           }
+           div.ex1 {
+             background-color: rgb(170, 226, 243);
+             height:620px;
+             width: 100%;
+             overflow-y: scroll;
+           }
+           #customers {
+             font-family: Arial, Helvetica, sans-serif;
+             border-collapse: collapse;
+             width: 100%;
+           }
+
+           #customers td, #customers th {
+             border: 1px solid #db0606;
+             padding: 8px;
+             width:fit-content;
+           }
+
+
+           #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+           #customers tr:hover {background-color: #ddd;}
+
+           #customers th {
+             padding-top: 12px;
+             padding-bottom: 12px;
+             text-align: left;
+             background-color: #e41cc9;
+             color: white;
+           }
+         </style>
+         <ul class="list-unstyled">
+          <li class="nav-item"><a class="nav-lin" href="/">Customer Bill</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/bill2">Labor Bill</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/perdet">Customer History</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/bperdet">Labor History</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/proo">Product List</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/prolis">Add Product</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/stock">Purchase</a></li>
+          <li class="nav-item"><a class="nav-lin" href="/totout">Amount_Track</a></li>
+
+         </ul>
+         </div>
+      
+         </div>
+       </div>
+       
+       <div class="col-lg-10">
+         <div class="content">
+          
+             <div class="container" >  
+         
+
+         
+
+              <style>
+             
+                
+            
+                
+                .row {
+                  display: -ms-flexbox; /* IE10 */
+                  display: flex;
+                  -ms-flex-wrap: wrap; /* IE10 */
+                  flex-wrap: wrap;
+                  margin: 0 -16px;
+                }
+                
+                .col-25 {
+                  -ms-flex: 25%; /* IE10 */
+                  flex: 25%;
+                }
+                
+                .col-50 {
+                  -ms-flex: 50%; /* IE10 */
+                  flex: 50%;
+                }
+                
+                .col-75 {
+                  -ms-flex: 75%; /* IE10 */
+                  flex: 75%;
+                }
+                
+                .col-25,
+                .col-50,
+                .col-75 {
+                  padding: 0 16px;
+                }
+                
+                .container {
+                  background-color: #f2f2f2;
+                  padding: 5px 20px 15px 20px;
+                  border: 1px solid lightgrey;
+                  border-radius: 3px;
+                }
+                
+                input[type=text] {
+                  width: 100%;
+                  margin-bottom: 20px;
+                  padding: 12px;
+                  border: 1px solid #ccc;
+                  border-radius: 3px;
+                }
+                
+                label {
+                  margin-bottom: 10px;
+                  display: block;
+                }
+                
+                .icon-container {
+                  margin-bottom: 20px;
+                  padding: 7px 0;
+                  font-size: 24px;
+                }
+                
+                .btn {
+                  background-color: #04AA6D;
+                  color: white;
+                  padding: 12px;
+                  margin: 10px 0;
+                  border: none;
+                  width: 100%;
+                  border-radius: 3px;
+                  cursor: pointer;
+                  font-size: 17px;
+                }
+                
+                .btn:hover {
+                  background-color: #45a049;
+                }
+                
+                a {
+                  color: #f1f3f5;
+                }
+                
+                hr {
+                  border: 1px solid lightgrey;
+                }
+                
+                span.price {
+                  float: right;
+                  color: grey;
+                }
+                
+                /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+                @media (max-width: 800px) {
+                  .row {
+                    flex-direction: column-reverse;
+                  }
+                  .col-25 {
+                    margin-bottom: 20px;
+                  }
+                }
+                </style>
+              
+               
+                <div class="row">
+                  <div class="col-75">
+                    <div class="container">
+                      <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                          <center> <select id="filterSelect" onchange="filterData()">
+                            
+                            <option  value="filterByAmount">Product Purchase</option>
+                            <option  value="filterByDate">Payment out</option>
+                        </select>
+                      
+                      </center>
+                        <script>
+                          function filterData() {
+                              var select = document.getElementById("filterSelect");
+                              var selectedValue = select.options[select.selectedIndex].value;
+                              
+                              if (selectedValue === "filterByAmount") {
+                                  window.location.href = "/stock";
+                              } else if (selectedValue === "filterByDate") {
+                                  window.location.href = "/stockout";
+                              }
+                          }
+                          
+                      </script>
+                      <center><h3>Billing </h3></center><br><br>
+                          <div class="col-50">
+                            
+                            
+
+                         
+                            <label for="firstname"><i class="fa fa-user"></i> Party Name</label>
+                            <input type="text" id="firstname" name="firstname" placeholder="Party Name" value="{{ firstname }}" required>
+
+                            <label for="cname"><i class="fa fa-fire"></i> Product Name</label>
+                            <input type="text" id="cname" name="cardname" placeholder="pipe">
+
+      
+                            <div class="col-50" style="margin-top: 0px;">
+                              <label for="select-input" style="margin-top: 8px;"><i class="fa fa-cc-paypal"></i> Payment Method </label>
+                              <select  class="form-control" id="payment" name="payment">
+                                {% if payment %} <option value="{{payment}}">{{payment}}</option> {% endif %}
+                                <option value="Cash payment">Cash payment</option>
+                                <option value="card payment">card payment</option>
+                                <option value="G pay & others payment">G pay & others payment</option>
+                                <option value="Check">Check </option>
+                                <option value="Net Banking">Net Banking</option>
+                              </select>
+                             </div>
+          
+                          </div>
+                
+                          <div class="col-50">
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Contact number</label>
+                            <input type="text" id="adr" name="address" placeholder="ph no" value="{{cont}}">
+                            <div class="row">
+                              <div class="col-50">
+                                <label for="expyear"><i class="fa fa-asterisk"></i> No of Product</label>
+                                <input type="number" id="expyear" name="expyear" placeholder="ex: 1">
+                              </div>
+                              <div class="col-50">
+                                <label for="select-input" style="margin-top: 17px;"><i class="fa fa-sort"></i> Value</label>
+                                <select  class="form-control" id="nqty" name="nqty">
+                                  <option value="qty">qty</option>
+                                  <option value="number">number</option>
+                                  <option value="pice">pcs</option>
+                                  <option value="kg">kg </option>
+                                  <option value="box">box</option>
+                                  <option value="length">length</option>
+                                  <option value="meter">meter<option>
+                                  <option value="descen">descen<option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-50">
+                                <label ><i class="fa fa-money"></i> Rate Per Piece </label>
+                                <input type="text" id="state" name="state" placeholder="ex: 121">
+                              </div>
+                             
+                            </div> 
+                          </div>
+                        </div>
+                        <center>
+                        <div style="display: flex; margin-left: -160px;" class="col-lg-2">
+                          <a href="/newbill"><input type="button" value="New bill " class="btn"></a>&nbsp;
+                        <a href="/list"><input type="button" value="checkout to continue " class="btn"></a>&nbsp;
+                    
+                        <input type="submit" class="btn" value="Submit" onclick="autofillPartyName()">
+                        </div>
+                      </center>
+                      </form>
+                    </div>
+                  </div>
+                </div>            
+           </div>
+           </div>
+       </div>
+     </div>
+   </div>
+ </body>
+ </html>
+ 
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
